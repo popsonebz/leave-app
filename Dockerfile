@@ -10,9 +10,9 @@ RUN mkdir /code
 
 WORKDIR /code
 
-RUN git clone https://github.com/popsonebz/tangent_leave_app_solution.git
+RUN git clone https://github.com/popsonebz/leave-app.git
 
-WORKDIR ./tangent_leave_app_solution
+WORKDIR ./leave-app
 
 RUN pip install --no-cache-dir -r requirements.txt
 
