@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: leave-app
-          image: docker.io/ebenezer/leave:v2
+          image: docker.io/ebenezer/leave:v4
           imagePullPolicy: Always
           ports:
           - containerPort: 1234
