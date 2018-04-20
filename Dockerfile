@@ -24,6 +24,6 @@ ENV DOCKER_CONTAINER=1
 
 RUN chmod u+x entrypoint.sh
 
-#CMD ["sh", "entrypoint.sh"]
+CMD ["sh", "entrypoint.sh"]
 
-CMD ["python", "./manage.py", "runserver", "0.0.0.0:1234"]
+#CMD ["python", "./manage.py", "runserver", "0.0.0.0:1234"]
