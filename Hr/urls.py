@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 urlpatterns = [
 	      url(r'^leave/', include('leave.urls', namespace='leave')),
 	      url(r'^admin/', include('backend.urls', namespace='backend'))
-	      ]
+	      ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 #urlpatterns = [
 #    url(r'^login/$', 'django.contrib.auth.views.login'),
