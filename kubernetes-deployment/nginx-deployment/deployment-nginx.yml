@@ -1,0 +1,38 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: leave-nginx-deployment
+  namespace: tan-app
+  labels:
+    env: dev
+  annotations: #used to attach data
+    scaleDown: '0'
+    scaleUp: '1'
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 2
+  template:
+    metadata:
+      labels:
+        app: leave-nginx
+    spec:
+      containers:
+        - name: leave-nginx
+          image: docker.io/ebenezer/leave-nginx:v3
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
+          resources:
+            # keep request = limit to keep this container in guaranteed class
+            limits:
+              cpu: 100m
+              memory: 400Mi
+            requests:
+              cpu: 50m
+              memory: 200Mi
+          
