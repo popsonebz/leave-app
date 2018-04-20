@@ -9,41 +9,79 @@
 ```
 kubectl config use-context minikube
 ```
-2. Create the namespace for the app.
+2. Use your terminal to navigate into app-deployment directory
+
+3. Apply the namespace for the app.
 
 ```
 kubectl apply -f namespace.yml
 ```
-3. Create the deployment 
+4. apply the deployment 
 ```
 kubectl apply -f deployment-app.yml
 ```
-4. Create the service
+5. Check if the pod is up and running
 ```
-kubectl apply -f Service.yml
+kubectl get service -n tan-app
 ```
-5. Expose the service on minikube
+6. Create the network policy
+```
+kubectl apply -f networkpolicy.yml
+```
+7. Navigate into nginx-deployment directory
+
+8. Apply the nginx deployment
+```
+kubectl apply -f deployment-nginx.yml
+```
+
+9. Expose the deployment so you can access it from your browser
+```
+kubectl expose deployment leave-nginx-deployment -n tan-app --type=NodePort
+kubectl expose deployment leave-app-deployment -n tan-app --type=NodePort
+```
+10. Expose the service on minikube
 ```
 minikube service leave-app-service -n tan-app
 ```
-6. Check the service and port mapping
+11. Check the service and port mapping
 ```
 kubectl get svc -n tan-app
 ```
 You should see something like this
 ```
 NAME                   CLUSTER-IP   EXTERNAL-IP   PORT(S)          AGE
-leave-nginx-service   10.0.0.105   <nodes>       1234:31825/TCP   46m
+leave-app-deployment   10.0.0.105   <nodes>       1234:31825/TCP   46m
+leave-nginx-deployment   10.0.0.105   <nodes>       1234:31825/TCP   46m
 ```
 Note the port mapping e.g 1234:31825, you will need it
 
-7. Get the IP address of your minikube
+12. Get the IP address of your minikube
 ```
 minikube ip
 ```
 copy this IP address
 
-8. From step 7 and 8, we now have the ip address and nodeport with which we can visit our app e.g
+13. Navigate back into app-deployment directory
+
+14. Enable ingress on the cluster
+
 ```
-http://192.168.99.100:31825/leave/login/
+minikube addons enable ingress
+```
+15. Create an ingress resource
+```
+kubectl apply -f ingress.yml
+```
+16. Edit your hosts file to add the ip address of minikube and leave.com at the last line of the file e.g
+```
+192.168.99.100 leave.com
+```
+17. Open your *Chrome* browser and visit this url to register an employee
+```
+leave.com/admin/add-employee
+```
+18. The employee can now login using the url below and the details from the above step
+```
+leave.com/leave/apply
 ```
