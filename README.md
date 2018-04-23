@@ -40,6 +40,23 @@ leave.com/leave/apply
 - Employee who has exhausted his leave.
 - Employee taking more than the remaining leave days he has.
 
+
+## Carrying Over Leave Not Taken
+
+The system carry's over a maximum of 5 days leave.
+
+This is done in the management command defined in leave/management/commands/carry_leave_over_the_year.py
+
+The operation can be carried out in 2 ways:
+
+1. Manually at the end of the year
+```
+   python manage.py carry_leave_over_the_year
+```
+2. Automatically by creating a linux crontab job which executes once a day to check if its the last day of the year.
+
+if the condition is met, the command in option 1  will be executed.
+
 ## Selenium Functional Test
 
 Note: To use the functional test, the following needs to be done:
@@ -63,21 +80,3 @@ first name = ben, last name = carson, employment date = 29/05/2017, username = b
 ```
    python manage.py test
 ```
-
-## Carrying Over Leave Not Taken
-
-The system carry's over a maximum of 5 days leave.
-
-This is done in the management command defined in leave/management/commands/carry_leave_over_the_year.py
-
-The operation can be carried out in 2 ways:
-
-1. Manually at the end of the year
-```
-   python manage.py carry_leave_over_the_year
-```
-2. Automatically by creating a linux crontab job which executes once a day to check if its the last day of the year.
-
-if the condition is met, the command in option 1  will be executed.
-
-
