@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: leave-app-network-policy
+  namespace: tan-app
+spec:
+  podSelector:
+    matchLabels:
+      app: leave-app-deployment
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: leave-nginx-deployment
+    ports:
+    - protocol: TCP
+      port: 1234
