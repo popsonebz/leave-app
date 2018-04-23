@@ -27,7 +27,7 @@ Note:
 
 4. On selecting the start and end dates, the following are checked:
 
-- Both either start or end date or end date cannot be less than the current date.
+- Neither start or end date can be less than the current date.
 - The end date cannot be less than the start date.
 - Start date cannot later than end date.
 - End date cannot be the same as start date.
