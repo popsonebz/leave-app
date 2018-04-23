@@ -10,9 +10,7 @@ RUN mkdir /code
 
 WORKDIR /code
 
-RUN git clone https://github.com/popsonebz/leave-app.git
-
-WORKDIR ./leave-app
+COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -26,4 +24,3 @@ RUN chmod u+x entrypoint.sh
 
 CMD ["sh", "entrypoint.sh"]
 
-#CMD ["python", "./manage.py", "runserver", "0.0.0.0:1234"]
