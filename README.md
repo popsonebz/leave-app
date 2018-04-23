@@ -19,7 +19,7 @@ Note:
 
 1. To apply for leave, the employee visits this url
 
-<leave.com/leave/apply>
+leave.com/leave/apply
 
 2. He/She is redirected to the login page for authentication
 
