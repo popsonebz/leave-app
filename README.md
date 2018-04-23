@@ -8,7 +8,7 @@ Visit to the kubernetes-deployment folder (https://github.com/popsonebz/leave-ap
 
 First of all, we need to add employees to the system
 
-<leave.com/admin/add-employee/>
+leave.com/admin/add-employee/
 
 Note:
 
