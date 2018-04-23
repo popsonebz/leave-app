@@ -10,3 +10,4 @@ spec:
     - port: 1234
       targetPort: 1234
       name: standard
+  type: NodePort
