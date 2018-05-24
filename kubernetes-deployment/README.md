@@ -22,7 +22,7 @@ kubectl apply -f deployment-app.yml
 ```
 5. Check if the pod is up and running
 ```
-kubectl get service -n tan-app
+kubectl get pods -n tan-app
 ```
 6. Create the network policy
 ```
