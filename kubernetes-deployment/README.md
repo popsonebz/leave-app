@@ -77,7 +77,7 @@ minikube addons enable ingress
 ```
 kubectl apply -f ingress.yml
 ```
-17. Edit your hosts file to add the ip address of minikube and leave.com at the last line of the file e.g
+17. Edit your hosts file(on linux machine /etc/hosts) to add the ip address of minikube and leave.com at the last line of the file e.g
 ```
 192.168.99.100 leave.com
 ```
