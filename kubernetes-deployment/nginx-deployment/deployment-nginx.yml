@@ -35,4 +35,35 @@ spec:
             requests:
               cpu: 50m
               memory: 200Mi
+          volumeMounts:
+            - name: default-conf
+              mountPath: /etc/nginx/conf.d/default.conf
+              subPath: default.conf
+            - name: js
+              mountPath: /var/www/static/bootstrap/js/bootstrap.min.js
+              subPath: bootstrap.min.js
+            - name: css
+              mountPath: /var/www/static/bootstrap/css/bootstrap.min.css
+              subPath: bootstrap.min.css
+      volumes:
+        #   consume the file-like keys of the configmap via volume plugin
+          - name: default-conf
+            configMap:
+              name: default.conf
+              items:
+              - key: default.conf
+                path: default.conf
+          - name: js
+            configMap:
+              name: bootstrap.min.js
+              items:
+              - key: bootstrap.min.js
+                path: bootstrap.min.js
+          - name: css
+            configMap:
+              name: bootstrap.min.css
+              items:
+              - key: bootstrap.min.css
+                path: bootstrap.min.css
+
           
